@@ -1,0 +1,78 @@
+# ==========================================================
+# Sistem operasi
+# ==========================================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ==========================================================
+# Editor & IDE
+# ==========================================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ==========================================================
+# Log & cache
+# ==========================================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.cache/
+.temp/
+.tmp/
+
+# ==========================================================
+# Dependensi (kalau nanti pakai build tool)
+# ==========================================================
+node_modules/
+vendor/
+dist/
+build/
+
+# ==========================================================
+# Environment & rahasia
+# ==========================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ==========================================================
+# File pribadi / sementara
+# ==========================================================
+catatan-pribadi/
+draft/
+*.psd
+*.ai
+*.sketch
+
+# Data profil pribadi (nomor HP, dsb). Disimpan lokal saja agar tidak
+# terpublikasi lewat GitHub Pages.
+DATA.md
+
+# Foto asli dari kamera: menyimpan EXIF GPS (lokasi pengambilan foto),
+# jadi JANGAN di-push. Situs memakai images/avatar.jpg yang sudah
+# dibersihkan metadatanya oleh proses crop di README.
+images/Profile.jpg
+
+# Skrip bantu pembuat gambar SEO (dipakai untuk regenerasi og-image)
+!.gen-images.ps1
+
+# Skrip verifikasi sementara (dibuat saat pengembangan, tidak ikut deploy)
+.verify-*.js
+.check-*.js
+.serve-*.js
+.tmp/

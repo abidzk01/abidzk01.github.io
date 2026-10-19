@@ -1,0 +1,58 @@
+# ==========================================================
+# Konteks build Docker — hanya yang perlu saja yang dikirim
+# ke daemon/BuildKit. Makin kecil konteks, makin cepat build
+# dan tidak ada file sensitif yang ikut terkirim.
+#
+# File situs yang WAJIB ada di konteks (jangan dimasukkan ke sini):
+#   index.html, css/, js/, images/, manifest.webmanifest,
+#   robots.txt, sitemap.xml, docker/
+# ==========================================================
+
+# ---- Riwayat & metadata Git ----
+.git
+.gitignore
+.gitattributes
+.github
+
+# ---- Konfigurasi Docker itu sendiri (tidak dibutuhkan di dalam image) ----
+docker-compose.yml
+.devcontainer
+
+# ---- Editor ----
+.vscode
+.idea
+*.sw?
+
+# ---- Dokumentasi (repo GitHub tetap punya, image tidak perlu) ----
+README.md
+*.md
+
+# ---- Sumber foto profil (hanya dipakai untuk membuat avatar) ----
+images/Profile.jpg
+
+# ---- Rahasia / environment (JANGAN pernah masuk image) ----
+.env
+.env.*
+!.env.example
+
+# ---- Skrip bantu & file OS ----
+.gen-images.ps1
+.nojekyll
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+
+# ---- Skrip verifikasi sementara ----
+.verify-*.js
+.check-*.js
+.serve-*.js
+.tmp/
+.temp/
+.cache/
+
+# ---- Dependensi (kalau nanti memakai build tool) ----
+node_modules/
+vendor/
+dist/
+build/

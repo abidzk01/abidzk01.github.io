@@ -1,0 +1,6 @@
+<!--
+  .nojekyll
+  File ini memberi tahu GitHub Pages untuk TIDAK memproses situs melalui Jekyll.
+  Berguna agar folder atau file yang diawali garis bawah (mis. _next, _assets)
+  tetap disajikan apa adanya. Isi file ini tidak penting -- keberadaannya yang penting.
+-->

@@ -1,0 +1,40 @@
+{
+  "name": "Abid Zakaria — FullStack Web Developer",
+  "short_name": "Abid Zakaria",
+  "description": "Portofolio pribadi Abid Zakaria, FullStack Web Developer di CV. Langitnet Sidoarjo. Proyek, keahlian, dan kontak.",
+  "lang": "id",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1120",
+  "theme_color": "#06b6d4",
+  "categories": ["portfolio", "business", "developer"],
+  "icons": [
+    {
+      "src": "images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

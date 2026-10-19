@@ -1,0 +1,500 @@
+/* ==========================================================================
+   Custom stylesheet
+   Berisi animasi, override, dan utilitas yang tidak disediakan Tailwind CDN.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Dasar
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* offset supaya judul section tidak tertutup navbar sticky */
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #06b6d4;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   2. Scrollbar
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+  background-clip: content-box;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #334155;
+  background-clip: content-box;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #475569;
+  background-clip: content-box;
+}
+
+/* --------------------------------------------------------------------------
+   3. Teks gradien & aksen
+   -------------------------------------------------------------------------- */
+.text-gradient {
+  background-image: linear-gradient(120deg, #06b6d4 0%, #0ea5e9 45%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* garis bawah animasi untuk link navigasi */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.15rem;
+  height: 2px;
+  width: 0;
+  border-radius: 9999px;
+  background-image: linear-gradient(90deg, #06b6d4, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+}
+
+.nav-link.is-active {
+  color: #0891b2;
+}
+
+.dark .nav-link.is-active {
+  color: #67e8f9;
+}
+
+/* --------------------------------------------------------------------------
+   4. Latar belakang dekoratif (blob)
+   -------------------------------------------------------------------------- */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.dark .blob {
+  opacity: 0.22;
+}
+
+.blob-1 {
+  width: 22rem;
+  height: 22rem;
+  top: -6rem;
+  left: -6rem;
+  background: radial-gradient(circle at 30% 30%, #06b6d4, #0ea5e9);
+  animation: blob-float 14s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 20rem;
+  height: 20rem;
+  bottom: -4rem;
+  right: -4rem;
+  background: radial-gradient(circle at 60% 40%, #3b82f6, #22d3ee);
+  animation: blob-float 18s ease-in-out infinite reverse;
+}
+
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(28px, -32px) scale(1.08);
+  }
+  66% {
+    transform: translate(-24px, 20px) scale(0.94);
+  }
+}
+
+/* pola grid halus */
+.bg-grid {
+  background-image: linear-gradient(rgba(100, 116, 139, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 116, 139, 0.09) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Scroll reveal
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* kartu proyek muncul berurutan */
+.reveal[data-delay='1'] {
+  transition-delay: 0.08s;
+}
+.reveal[data-delay='2'] {
+  transition-delay: 0.16s;
+}
+.reveal[data-delay='3'] {
+  transition-delay: 0.24s;
+}
+.reveal[data-delay='4'] {
+  transition-delay: 0.32s;
+}
+.reveal[data-delay='5'] {
+  transition-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .blob {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Tombol
+   -------------------------------------------------------------------------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background-color 0.25s ease,
+    border-color 0.25s ease, color 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-image: linear-gradient(120deg, #06b6d4, #0ea5e9 50%, #3b82f6);
+  color: #ffffff;
+  box-shadow: 0 10px 24px -10px rgba(6, 182, 212, 0.85);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 16px 34px -10px rgba(14, 165, 233, 0.9);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  color: inherit;
+}
+
+.btn-ghost:hover {
+  border-color: #06b6d4;
+  color: #0891b2;
+}
+
+.dark .btn-ghost:hover {
+  border-color: #22d3ee;
+  color: #a5f3fc;
+}
+
+/* --------------------------------------------------------------------------
+   7. Kartu
+   -------------------------------------------------------------------------- */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(6, 182, 212, 0.55);
+  box-shadow: 0 22px 45px -22px rgba(30, 41, 59, 0.45);
+}
+
+.dark .card:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 22px 45px -22px rgba(0, 0, 0, 0.85);
+}
+
+/* ikon di dalam kartu skill */
+.skill-icon {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .skill-icon {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+/* --------------------------------------------------------------------------
+   8. Pemilih bahasa (ID / EN)
+   -------------------------------------------------------------------------- */
+.lang-btn {
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #64748b;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lang-btn:hover {
+  color: #0891b2;
+}
+
+.lang-btn[aria-pressed='true'] {
+  background-image: linear-gradient(120deg, #06b6d4, #3b82f6);
+  color: #ffffff;
+  box-shadow: 0 6px 14px -6px rgba(6, 182, 212, 0.9);
+}
+
+.dark .lang-btn {
+  color: #94a3b8;
+}
+
+.dark .lang-btn:hover {
+  color: #67e8f9;
+}
+
+/* --------------------------------------------------------------------------
+   8b. Badge teknologi (pengganti progress bar)
+   -------------------------------------------------------------------------- */
+.tag {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.card:hover .tag {
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   9. Hamburger
+   -------------------------------------------------------------------------- */
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: currentColor;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.hamburger-line + .hamburger-line {
+  margin-top: 5px;
+}
+
+.menu-open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* panel menu mobile */
+#mobile-menu {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+#mobile-menu.menu-open {
+  max-height: 26rem;
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   10. Avatar
+   -------------------------------------------------------------------------- */
+.avatar-ring {
+  background: conic-gradient(from 140deg, #06b6d4, #0ea5e9, #3b82f6, #06b6d4);
+  animation: ring-spin 9s linear infinite;
+}
+
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-ring {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Tombol back-to-top
+   -------------------------------------------------------------------------- */
+#back-to-top {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+#back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   12. Status dot (available badge)
+   -------------------------------------------------------------------------- */
+.status-dot {
+  position: relative;
+  display: inline-flex;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #22c55e;
+}
+
+.status-dot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: #22c55e;
+  animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. Form
+   -------------------------------------------------------------------------- */
+.field {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.field:focus {
+  outline: none;
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.16);
+}
+
+.dark .field:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   14. State dinamis yang ditambahkan JavaScript
+   Ditulis sebagai class CSS sendiri agar tidak bergantung pada pemindaian
+   class oleh Tailwind Play CDN saat runtime.
+   -------------------------------------------------------------------------- */
+
+/* navbar mendapat bayangan setelah halaman di-scroll */
+#navbar.nav-scrolled {
+  box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.18);
+}
+
+.dark #navbar.nav-scrolled {
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.7);
+}
+
+/* kolom form yang tidak valid */
+.field.is-invalid,
+.field.is-invalid:focus {
+  border-color: #f43f5e;
+  box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.16);
+}
+
+.dark .field.is-invalid,
+.dark .field.is-invalid:focus {
+  border-color: #fb7185;
+  box-shadow: 0 0 0 4px rgba(251, 113, 133, 0.2);
+}
+
+/* tombol yang sedang mengirim data */
+.btn.is-busy {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   15. Utilitas cetak
+   -------------------------------------------------------------------------- */
+@media print {
+  #navbar,
+  #back-to-top,
+  #mobile-menu,
+  .blob {
+    display: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

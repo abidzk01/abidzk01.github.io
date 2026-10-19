@@ -1,0 +1,33 @@
+# ==========================================================================
+# robots.txt — aturan perayapan untuk mesin pencari
+#
+# Ganti https://abidzk01.github.io/ bila memakai domain kustom,
+# mis. https://abidzakaria.com/
+# ==========================================================================
+
+User-agent: *
+Allow: /
+
+# Jangan rayapi file konfigurasi dan berkas internal
+Disallow: /*.json$
+Disallow: /README.md
+Disallow: /DATA.md
+Disallow: /.gitignore
+Disallow: /.nojekyll
+
+# Tidak ada yang perlu disembunyikan dari Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Blokir bot pengikis konten yang tidak memberi manfaat
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Lokasi sitemap (WAJIB absolut)
+Sitemap: https://abidzk01.github.io/sitemap.xml
