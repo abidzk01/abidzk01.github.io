@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ==================================================================
+         HALAMAN CV
+         Konten di halaman ini ditulis dua kali: teks Indonesia ada di
+         markup (dipakai bila JavaScript mati), terjemahan ada di
+         js/i18n.js pada kunci berawalan "cv.".
+
+         Cara memperbarui isi CV:
+           1. Ubah teks di bawah ini (versi Indonesia) DAN kunci "cv.*"
+              yang sama di js/i18n.js (versi Inggris).
+           2. Buka cv.html?lang=id dan cv.html?lang=en untuk memeriksa.
+           3. Buat ulang PDF (lihat README, bagian "Halaman CV").
+         ================================================================== -->
+    <title data-i18n="cv.docTitle">CV — Abid Zakaria, FullStack Web Developer</title>
+    <meta
+      name="description"
+      content="CV Abid Zakaria, FullStack Web Developer di CV. Langitnet Sidoarjo. Pengalaman, keahlian, dan proyek dalam satu halaman siap cetak."
+    />
+    <meta name="author" content="Abid Zakaria" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://abidzk01.github.io/cv.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="CV — Abid Zakaria, FullStack Web Developer" data-i18n-attr="content:cv.docTitle" />
+    <meta
+      property="og:description"
+      content="CV Abid Zakaria, FullStack Web Developer di CV. Langitnet Sidoarjo."
+    />
+    <meta property="og:url" content="https://abidzk01.github.io/cv.html" />
+    <meta property="og:image" content="https://abidzk01.github.io/images/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="images/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Terapkan tema & bahasa sebelum render supaya tidak berkedip -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('profile-theme');
+          var isDark =
+            stored === 'dark' ||
+            (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="stylesheet" href="css/cv.css" />
+  </head>
+
+  <body>
+    <!-- ================================================================
+         BILAH AKSI (tidak ikut tercetak)
+         ================================================================ -->
+    <div class="cv-actions">
+      <a href="index.html" class="cv-btn">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m0 0l6-6m-6 6l6 6" />
+        </svg>
+        <span data-i18n="cv.backToPortfolio">Kembali ke portofolio</span>
+      </a>
+
+      <div class="cv-actions__group">
+        <div class="cv-lang" role="group" aria-label="Pilih bahasa" data-i18n-attr="aria-label:nav.langLabel">
+          <button type="button" data-lang-btn="id" aria-pressed="true">ID</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+        </div>
+
+        <button type="button" class="cv-btn" id="cv-print">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V3h12v6M6 18H4v-6h16v6h-2M6 14h12v7H6z" />
+          </svg>
+          <span data-i18n="cv.print">Cetak</span>
+        </button>
+
+        <a href="cv.pdf" download class="cv-btn cv-btn--primary" id="cv-download">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" />
+          </svg>
+          <span data-i18n="cv.downloadPdf">Unduh PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="cv-hint" data-i18n="cv.printHint">
+      Tips: pada dialog cetak, pilih "Simpan sebagai PDF" dan matikan header/footer.
+    </p>
+
+    <!-- ================================================================
+         LEMBAR CV
+         ================================================================ -->
+    <main class="sheet">
+      <header>
+        <h1 class="cv-name">Abid Zakaria</h1>
+        <p class="cv-role" data-i18n="cv.role">FullStack Web Developer</p>
+
+        <ul class="cv-contact">
+          <li><a href="mailto:abidzakaria6@gmail.com">abidzakaria6@gmail.com</a></li>
+          <li><a href="tel:+6283114840702">+62 831-1484-0702</a></li>
+          <li data-i18n="cv.location">Gresik, Jawa Timur, Indonesia</li>
+          <li><a href="https://github.com/abidzk01">github.com/abidzk01</a></li>
+          <li>
+            <a href="https://www.linkedin.com/in/abid-zakaria-139b1a112">
+              linkedin.com/in/abid-zakaria-139b1a112
+            </a>
+          </li>
+          <li><a href="https://rxdiag.my.id">rxdiag.my.id</a></li>
+        </ul>
+      </header>
+
+      <!-- RINGKASAN -->
+      <section class="cv-section">
+        <h2 data-i18n="cv.summary">Ringkasan</h2>
+        <p data-i18n="cv.summaryText">
+          FullStack Web Developer yang membangun aplikasi web produksi dari antarmuka sampai API.
+          Sehari-hari bekerja dengan Laravel, PHP, dan Redis, serta memakai Node.js/Bun, Python, dan
+          Docker untuk kebutuhan lain. Terbiasa menangani aplikasi sejak pengembangan, deployment di
+          VPS, sampai pemantauan performa.
+        </p>
+      </section>
+
+      <!-- KEAHLIAN -->
+      <section class="cv-section">
+        <h2 data-i18n="cv.skills">Keahlian</h2>
+        <dl class="cv-skills">
+          <dt data-i18n="cv.skillsLang">Bahasa</dt>
+          <dd>PHP, JavaScript, Python, SQL</dd>
+
+          <dt data-i18n="cv.skillsBackend">Backend</dt>
+          <dd>Laravel, CodeIgniter, AdonisJS, ElysiaJS, FastAPI, Node.js, Bun, Prisma</dd>
+
+          <dt data-i18n="cv.skillsFrontend">Frontend</dt>
+          <dd>Blade, Vue (Inertia), Alpine.js, jQuery, Tailwind CSS, Bootstrap, Vite</dd>
+
+          <dt data-i18n="cv.skillsData">Data &amp; Infrastruktur</dt>
+          <dd>Redis, S3, Docker/Podman, Nginx, VPS (Coolify, CloudPanel), Git</dd>
+
+          <dt data-i18n="cv.skillsTools">Alat &amp; Operasional</dt>
+          <dd>Deployment aplikasi, cache, backup, pemantauan server</dd>
+        </dl>
+      </section>
+
+      <!-- PENGALAMAN KERJA -->
+      <section class="cv-section">
+        <h2 data-i18n="cv.experience">Pengalaman Kerja</h2>
+
+        <article class="cv-entry">
+          <div class="cv-entry__head">
+            <p class="cv-entry__title" data-i18n="cv.expRole">FullStack Web Developer</p>
+            <!-- Tanggal mulai belum dicantumkan. Ganti isi span di bawah
+                 dengan periode kerja, mis. "2024 — sekarang". -->
+            <span class="cv-entry__meta" data-i18n="cv.expPeriod">Sidoarjo, Jawa Timur</span>
+          </div>
+          <p class="cv-entry__sub" data-i18n="cv.expCompany">CV. Langitnet Sidoarjo</p>
+          <ul class="cv-list">
+            <li data-i18n="cv.expB1">
+              Membangun dan merawat Langitnet Shop, aplikasi e-commerce untuk pemesanan produk dan
+              layanan, dengan Laravel, Alpine.js, dan Redis.
+            </li>
+            <li data-i18n="cv.expB2">
+              Mengembangkan Langitnet Mitra, aplikasi ERP kemitraan untuk mengelola kemitraan dan
+              operasional harian mitra.
+            </li>
+            <li data-i18n="cv.expB3">
+              Menangani sembilan aplikasi internal Langitnet, termasuk B2B, Expedition, Ngantor, dan
+              RMA.
+            </li>
+            <li data-i18n="cv.expB4">
+              Menjalankan deployment dan operasional di VPS: Docker/Podman, Nginx,
+              Coolify/CloudPanel, cache Redis, dan penyimpanan S3.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- PROYEK -->
+      <section class="cv-section">
+        <h2 data-i18n="cv.projects">Proyek</h2>
+
+        <article class="cv-project">
+          <div class="cv-project__head">
+            <span class="cv-project__name" data-i18n="cv.proj1Name">Langitnet Shop — E-Commerce</span>
+            <a class="cv-project__link" href="https://langitnet.com">langitnet.com</a>
+          </div>
+          <p data-i18n="cv.proj1Desc">
+            Aplikasi e-commerce untuk pemesanan produk dan layanan: katalog, keranjang, dan proses
+            pesanan.
+          </p>
+          <p class="cv-project__stack">Laravel · Alpine.js · Tailwind CSS · Vite · Redis · PHP</p>
+        </article>
+
+        <article class="cv-project">
+          <div class="cv-project__head">
+            <span class="cv-project__name" data-i18n="cv.proj2Name">Langitnet Mitra — ERP Kemitraan</span>
+            <a class="cv-project__link" href="https://mitra.langitnet.com">mitra.langitnet.com</a>
+          </div>
+          <p data-i18n="cv.proj2Desc">
+            ERP khusus mitra untuk mengelola kemitraan dan operasional harian.
+          </p>
+          <p class="cv-project__stack">Laravel · jQuery · Bootstrap · PHP · Redis</p>
+        </article>
+
+        <article class="cv-project">
+          <div class="cv-project__head">
+            <span class="cv-project__name" data-i18n="cv.proj3Name">Aplikasi Internal Langitnet</span>
+          </div>
+          <p data-i18n="cv.proj3Desc">
+            B2B, Expedition, Ngantor, RMA, dan lima aplikasi lain untuk operasional internal
+            perusahaan.
+          </p>
+          <p class="cv-project__stack">Laravel · PHP · Redis · Bootstrap</p>
+        </article>
+      </section>
+
+      <!-- ================================================================
+           PENDIDIKAN
+           Disembunyikan karena datanya belum tersedia. Isi nama kampus,
+           jurusan, dan tahun, lalu HAPUS atribut "hidden" di bawah ini.
+           ================================================================ -->
+      <section class="cv-section" id="education" hidden>
+        <h2 data-i18n="cv.education">Pendidikan</h2>
+        <article class="cv-entry">
+          <div class="cv-entry__head">
+            <p class="cv-entry__title">Nama Kampus</p>
+            <span class="cv-entry__meta">Tahun masuk — tahun lulus</span>
+          </div>
+          <p class="cv-entry__sub">Program studi / jurusan</p>
+        </article>
+      </section>
+
+      <!-- ================================================================
+           SERTIFIKASI & PELATIHAN
+           Hapus atribut "hidden" setelah diisi.
+           ================================================================ -->
+      <section class="cv-section" id="certifications" hidden>
+        <h2 data-i18n="cv.certifications">Sertifikasi &amp; Pelatihan</h2>
+        <article class="cv-entry">
+          <div class="cv-entry__head">
+            <p class="cv-entry__title">Nama sertifikasi</p>
+            <span class="cv-entry__meta">Tahun</span>
+          </div>
+          <p class="cv-entry__sub">Penerbit</p>
+        </article>
+      </section>
+
+      <!-- BAHASA -->
+      <section class="cv-section">
+        <h2 data-i18n="cv.languages">Bahasa</h2>
+        <p data-i18n="cv.languagesValue">Indonesia (native) · Inggris (profesional)</p>
+      </section>
+
+      <footer class="cv-foot">
+        <span data-i18n="cv.updated">Diperbarui Oktober 2026</span>
+        <span>rxdiag.my.id/cv.html</span>
+      </footer>
+    </main>
+
+    <!-- Kamus bahasa dipakai bersama dengan index.html agar terjemahan dan
+         pilihan bahasa tetap sinkron di kedua halaman. -->
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js" defer></script>
+    <script>
+      (function () {
+        'use strict';
+
+        // Dukungan ?lang=id / ?lang=en, berguna saat membuat PDF otomatis.
+        var params = new URLSearchParams(window.location.search);
+        var requested = params.get('lang');
+        if (requested && window.I18N) window.I18N.set(requested);
+
+        // Tombol cetak.
+        var printBtn = document.getElementById('cv-print');
+        if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+
+        // Tombol unduh menunjuk berkas PDF sesuai bahasa aktif.
+        var download = document.getElementById('cv-download');
+        function syncDownload() {
+          if (!download) return;
+          var lang = (window.I18N && window.I18N.current && window.I18N.current()) || 'id';
+          download.setAttribute('href', lang === 'en' ? 'cv-en.pdf' : 'cv.pdf');
+        }
+        syncDownload();
+        document.addEventListener('langchange', syncDownload);
+      })();
+    </script>
+  </body>
+</html>

@@ -15,6 +15,7 @@ Website portofolio **satu halaman, dua bahasa (Indonesia / English)** yang siap 
 - [Menjalankan Secara Lokal](#menjalankan-secara-lokal)
 - [Mengubah Data Profil](#mengubah-data-profil)
 - [Multi-bahasa (ID / EN)](#multi-bahasa-id--en)
+- [Halaman CV](#halaman-cv)
 - [SEO](#seo)
 - [Deploy ke GitHub Pages](#deploy-ke-github-pages)
 - [Deploy dengan Docker](#deploy-dengan-docker)
@@ -32,6 +33,7 @@ Website portofolio **satu halaman, dua bahasa (Indonesia / English)** yang siap 
 | **Section Projects** | Kartu **Langitnet Shop** & **Langitnet Mitra** (tautan publik) + badge aplikasi internal |
 | **Section Skills** | Tag/badge per kategori: Frontend, Backend, Tools & Lainnya (tanpa persentase) |
 | **Section Contact (Email Me)** | Kartu Email, WhatsApp, GitHub, LinkedIn, Facebook + form yang mengisi email otomatis |
+| **Halaman CV (`cv.html`)** | CV satu halaman ukuran A4, dua bahasa, siap cetak/PDF + berkas `cv.pdf` dan `cv-en.pdf` untuk diunduh |
 | **Multi-bahasa (ID / EN)** | Tombol `ID` / `EN` di navbar, seluruh teks + meta + JSON-LD ikut berganti |
 | **Dark / Light Mode** | Tombol toggle di navbar, preferensi disimpan di `localStorage` |
 | **Responsif** | Diuji dari lebar 320 px sampai desktop |
@@ -48,8 +50,12 @@ Website portofolio **satu halaman, dua bahasa (Indonesia / English)** yang siap 
 ```
 myprofile/
 ├── index.html                 # Seluruh halaman (semua section) + penanda data-i18n
+├── cv.html                    # CV satu halaman (A4, siap cetak) + penanda data-i18n
+├── cv.pdf                     # Hasil cetak cv.html versi Indonesia
+├── cv-en.pdf                  # Hasil cetak cv.html versi Inggris
 ├── css/
-│   └── style.css              # Animasi, palet cyan, gaya kustom di luar Tailwind
+│   ├── style.css              # Animasi, palet cyan, gaya kustom di luar Tailwind
+│   └── cv.css                 # Gaya halaman CV (print-first, tanpa Tailwind)
 ├── js/
 │   ├── i18n.js                # Kamus dua bahasa (id / en) + penerjemah otomatis
 │   └── main.js                # Tema, menu mobile, scrollspy, pemilih bahasa, form kontak
@@ -216,6 +222,55 @@ Saat bahasa berganti, yang ikut berubah bukan hanya teks: `<html lang>`, `<title
    `<button type="button" data-lang-btn="ja" aria-pressed="false" class="lang-btn">JA</button>`
 
 Tidak ada perubahan lain yang diperlukan.
+
+---
+
+## Halaman CV
+
+`cv.html` adalah versi CV satu halaman dari profil ini: ukuran A4, dua bahasa, dan
+langsung siap dicetak. Tombol **Unduh CV** di hero dan footer `index.html` mengarah ke
+`cv.pdf`, sedangkan menu **CV** di navbar membuka `cv.html`.
+
+| Berkas | Isi |
+| --- | --- |
+| `cv.html` | Markup CV + penanda `data-i18n` (teks Indonesia menjadi fallback) |
+| `css/cv.css` | Gaya layar & aturan cetak (`@page` A4, tanpa Tailwind) |
+| `js/i18n.js` | Terjemahan Inggris pada kunci berawalan `cv.*` |
+| `cv.pdf` | Hasil cetak versi Indonesia |
+| `cv-en.pdf` | Hasil cetak versi Inggris |
+
+### Mengubah isi CV
+
+1. Ubah teks Indonesia langsung di `cv.html`.
+2. Ubah teks yang sama pada blok `cv.*` di `js/i18n.js` (bagian `id` dan `en`).
+3. Periksa hasilnya di `cv.html` dan `cv.html?lang=en`.
+
+Section **Pendidikan** dan **Sertifikasi** sengaja disembunyikan (atribut `hidden`)
+karena datanya belum diisi. Setelah melengkapi nama kampus/jurusan/tahun atau nama
+sertifikasi, hapus atribut `hidden` pada `<section>` terkait.
+
+### Membuat ulang PDF
+
+PDF dibuat dari `cv.html` memakai Chrome/Edge headless, sehingga hasilnya sama dengan
+tampilan cetak:
+
+```powershell
+$chrome = "$env:ProgramFiles\Google\Chrome\Application\chrome.exe"
+
+& $chrome --headless=new --disable-gpu --no-pdf-header-footer `
+  --virtual-time-budget=5000 --print-to-pdf="cv.pdf" `
+  "file:///$((Get-Location).Path -replace '\\','/')/cv.html?lang=id"
+
+& $chrome --headless=new --disable-gpu --no-pdf-header-footer `
+  --virtual-time-budget=5000 --print-to-pdf="cv-en.pdf" `
+  "file:///$((Get-Location).Path -replace '\\','/')/cv.html?lang=en"
+```
+
+Tanpa Chrome, buka `cv.html` lalu klik **Cetak** (atau `Ctrl+P`) dan pilih
+*Save as PDF* — pastikan ukuran kertas A4 dan opsi *Headers and footers* dimatikan.
+
+> Jangan lupa memperbarui tanggal pada `cv.updated` di `js/i18n.js` setiap kali isi CV
+> berubah, lalu jalankan ulang perintah di atas agar PDF ikut terbarui.
 
 ---
 

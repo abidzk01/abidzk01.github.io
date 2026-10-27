@@ -37,6 +37,9 @@ COPY docker/security-headers.conf  /etc/nginx/snippets/security-headers.conf
 #    image dan file dev seperti README/.env tidak ikut terbawa.
 # --------------------------------------------------------------------------
 COPY index.html            /usr/share/nginx/html/index.html
+COPY cv.html               /usr/share/nginx/html/cv.html
+COPY cv.pdf                /usr/share/nginx/html/cv.pdf
+COPY cv-en.pdf             /usr/share/nginx/html/cv-en.pdf
 COPY manifest.webmanifest  /usr/share/nginx/html/manifest.webmanifest
 COPY robots.txt            /usr/share/nginx/html/robots.txt
 COPY sitemap.xml           /usr/share/nginx/html/sitemap.xml

@@ -1,0 +1,489 @@
+/* ==========================================================================
+   cv.css
+   Gaya khusus halaman CV (cv.html).
+
+   Prinsip:
+   - Print-first: ukuran A4, margin cetak, dan pemenggalan halaman yang rapi.
+   - Kertas selalu putih (termasuk saat mode gelap) supaya hasil cetak/PDF
+     sama persis dengan yang terlihat di layar.
+   - Tidak memakai Tailwind, jadi halaman ini tetap rapi walau CDN diblokir
+     atau sedang offline.
+
+   Bagian:
+   1. Variabel & dasar
+   2. Bilah aksi (hanya tampil di layar)
+   3. Lembar A4
+   4. Kepala CV
+   5. Section umum
+   6. Keahlian
+   7. Pengalaman & proyek
+   8. Footer lembar
+   9. Responsif
+   10. Aturan cetak
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Variabel & dasar
+   -------------------------------------------------------------------------- */
+:root {
+  --cv-ink: #0f172a;
+  --cv-body: #334155;
+  --cv-muted: #64748b;
+  --cv-line: #e2e8f0;
+  --cv-accent: #0e7490;
+  --cv-paper: #ffffff;
+  --cv-shell: #eef2f7;
+  --cv-border: #cbd5e1;
+}
+
+html.dark {
+  --cv-shell: #020617;
+  --cv-border: #334155;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cv-shell);
+  color: var(--cv-body);
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 10pt;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   2. Bilah aksi (hanya tampil di layar)
+   -------------------------------------------------------------------------- */
+.cv-actions {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+  background-color: rgba(238, 242, 247, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+html.dark .cv-actions {
+  background-color: rgba(2, 6, 23, 0.85);
+  border-bottom-color: rgba(148, 163, 184, 0.18);
+}
+
+.cv-actions__group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--cv-border);
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: var(--cv-ink);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.cv-btn:hover {
+  border-color: var(--cv-accent);
+  color: var(--cv-accent);
+}
+
+.cv-btn:focus-visible,
+.cv-lang button:focus-visible {
+  outline: 2px solid var(--cv-accent);
+  outline-offset: 2px;
+}
+
+html.dark .cv-btn {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.cv-btn--primary {
+  border-color: transparent;
+  background-image: linear-gradient(135deg, #06b6d4, #2563eb);
+  color: #ffffff;
+}
+
+.cv-btn--primary:hover {
+  color: #ffffff;
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.cv-lang {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--cv-border);
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+html.dark .cv-lang {
+  background-color: #0f172a;
+}
+
+.cv-lang button {
+  border: 0;
+  padding: 8px 11px;
+  background: transparent;
+  color: var(--cv-muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cv-lang button[aria-pressed='true'] {
+  background-color: var(--cv-accent);
+  color: #ffffff;
+}
+
+.cv-hint {
+  margin: 0;
+  padding: 6px 16px 0;
+  color: var(--cv-muted);
+  font-size: 11.5px;
+  text-align: center;
+}
+
+html.dark .cv-hint {
+  color: #94a3b8;
+}
+
+/* --------------------------------------------------------------------------
+   3. Lembar A4
+   -------------------------------------------------------------------------- */
+.sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 18px auto 44px;
+  padding: 15mm 16mm 12mm;
+  border-radius: 6px;
+  background-color: var(--cv-paper);
+  box-shadow: 0 24px 60px -24px rgba(15, 23, 42, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   4. Kepala CV
+   -------------------------------------------------------------------------- */
+.cv-name {
+  margin: 0;
+  color: var(--cv-ink);
+  font-size: 25pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.cv-role {
+  margin: 5px 0 0;
+  color: var(--cv-accent);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cv-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px 20px;
+  margin: 11px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 9.2pt;
+  color: var(--cv-body);
+  overflow-wrap: anywhere;
+}
+
+.cv-contact a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.cv-contact a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   5. Section umum
+   -------------------------------------------------------------------------- */
+.cv-section {
+  margin-top: 13px;
+}
+
+.cv-section > h2 {
+  margin: 0 0 6px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--cv-line);
+  color: var(--cv-accent);
+  font-size: 8.8pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cv-section p {
+  margin: 0;
+  font-size: 9.5pt;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   6. Keahlian
+   -------------------------------------------------------------------------- */
+.cv-skills {
+  display: grid;
+  grid-template-columns: 33mm 1fr;
+  gap: 2px 8px;
+  margin: 0;
+  font-size: 9.4pt;
+  line-height: 1.45;
+}
+
+.cv-skills dt {
+  color: var(--cv-ink);
+  font-weight: 700;
+}
+
+.cv-skills dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+   7. Pengalaman & proyek
+   -------------------------------------------------------------------------- */
+.cv-entry {
+  margin-bottom: 9px;
+}
+
+.cv-entry:last-child {
+  margin-bottom: 0;
+}
+
+.cv-entry__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cv-entry__title {
+  margin: 0;
+  color: var(--cv-ink);
+  font-size: 10.2pt;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cv-entry__meta {
+  flex-shrink: 0;
+  color: var(--cv-muted);
+  font-size: 8.8pt;
+  white-space: nowrap;
+}
+
+.cv-entry__sub {
+  margin: 1px 0 0;
+  color: var(--cv-body);
+  font-size: 9.4pt;
+  font-weight: 600;
+}
+
+.cv-list {
+  margin: 3px 0 0;
+  padding-left: 15px;
+  font-size: 9.4pt;
+  line-height: 1.45;
+}
+
+.cv-list li {
+  margin-bottom: 1.5px;
+}
+
+.cv-list li:last-child {
+  margin-bottom: 0;
+}
+
+.cv-project {
+  margin-bottom: 8px;
+}
+
+.cv-project:last-child {
+  margin-bottom: 0;
+}
+
+.cv-project__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cv-project__name {
+  color: var(--cv-ink);
+  font-size: 9.7pt;
+  font-weight: 700;
+}
+
+.cv-project__link {
+  flex-shrink: 0;
+  color: var(--cv-accent);
+  font-size: 8.8pt;
+  text-decoration: none;
+}
+
+.cv-project__link:hover {
+  text-decoration: underline;
+}
+
+.cv-project p {
+  margin: 1px 0 0;
+  font-size: 9.3pt;
+  line-height: 1.45;
+}
+
+.cv-project__stack {
+  color: var(--cv-muted);
+  font-size: 8.6pt;
+}
+
+/* --------------------------------------------------------------------------
+   8. Footer lembar
+   -------------------------------------------------------------------------- */
+.cv-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 6px;
+  border-top: 1px solid var(--cv-line);
+  color: var(--cv-muted);
+  font-size: 8.2pt;
+}
+
+/* --------------------------------------------------------------------------
+   9. Responsif
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 820px) {
+  .sheet {
+    width: auto;
+    min-height: 0;
+    margin: 14px 12px 30px;
+    padding: 24px 20px;
+    border-radius: 10px;
+  }
+
+  .cv-contact {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .cv-skills {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .cv-skills dt {
+    margin-top: 7px;
+  }
+
+  .cv-skills dt:first-of-type {
+    margin-top: 0;
+  }
+
+  .cv-entry__head,
+  .cv-project__head {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cv-entry__meta {
+    white-space: normal;
+  }
+
+  .cv-name {
+    font-size: 21pt;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Aturan cetak
+   Kertas A4, tanpa elemen antarmuka, dan tanpa pemenggalan di tengah entri.
+   -------------------------------------------------------------------------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 11mm 13mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  .cv-actions,
+  .cv-hint {
+    display: none !important;
+  }
+
+  .sheet {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .cv-section,
+  .cv-entry,
+  .cv-project {
+    break-inside: avoid;
+  }
+
+  .cv-entry__meta {
+    white-space: normal;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .cv-project__link {
+    color: var(--cv-accent);
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

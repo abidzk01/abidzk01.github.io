@@ -446,6 +446,17 @@
     applyTheme(getPreferredTheme());
   });
 
+  // Tombol "Unduh CV" mengikuti bahasa aktif: cv.pdf (ID) / cv-en.pdf (EN).
+  function syncCvDownload() {
+    const lang = (window.I18N && window.I18N.current && window.I18N.current()) || 'id';
+    document.querySelectorAll('[data-cv-download]').forEach(function (link) {
+      link.setAttribute('href', lang === 'en' ? 'cv-en.pdf' : 'cv.pdf');
+    });
+  }
+
+  syncCvDownload();
+  document.addEventListener('langchange', syncCvDownload);
+
   /* ======================================================================
      10. TAHUN DI FOOTER & INISIALISASI AKHIR
      ====================================================================== */

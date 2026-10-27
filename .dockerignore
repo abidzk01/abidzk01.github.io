@@ -4,8 +4,8 @@
 # dan tidak ada file sensitif yang ikut terkirim.
 #
 # File situs yang WAJIB ada di konteks (jangan dimasukkan ke sini):
-#   index.html, css/, js/, images/, manifest.webmanifest,
-#   robots.txt, sitemap.xml, docker/
+#   index.html, cv.html, cv.pdf, cv-en.pdf, css/, js/, images/,
+#   manifest.webmanifest, robots.txt, sitemap.xml, docker/
 # ==========================================================
 
 # ---- Riwayat & metadata Git ----

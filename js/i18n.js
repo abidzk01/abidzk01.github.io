@@ -31,6 +31,7 @@
       'nav.skills': 'Keahlian',
       'nav.contact': 'Kontak',
       'nav.emailCta': 'Email Saya',
+      'nav.cv': 'CV',
       'nav.openMenu': 'Buka menu navigasi',
       'nav.menuOpen': 'Menu navigasi terbuka',
       'nav.langLabel': 'Pilih bahasa',
@@ -49,6 +50,7 @@
         'Saya membangun aplikasi web — dari antarmuka yang rapi sampai API yang andal. Sehari-hari bekerja di CV. Langitnet Sidoarjo dan terbuka untuk kolaborasi maupun kerja remote.',
       'hero.ctaProjects': 'Lihat Proyek',
       'hero.ctaEmail': 'Email Saya',
+      'hero.ctaCv': 'Unduh CV',
       'hero.follow': 'Ikuti',
       'hero.cardLabel': 'Posisi saat ini',
 
@@ -100,6 +102,51 @@
       'skills.backend': 'Backend',
       'skills.tools': 'Tools & Lainnya',
 
+      /* Halaman CV (cv.html) */
+      'cv.docTitle': 'CV — Abid Zakaria, FullStack Web Developer',
+      'cv.role': 'FullStack Web Developer',
+      'cv.location': 'Gresik, Jawa Timur, Indonesia',
+      'cv.summary': 'Ringkasan',
+      'cv.summaryText':
+        'FullStack Web Developer yang membangun aplikasi web produksi dari antarmuka sampai API. Sehari-hari bekerja dengan Laravel, PHP, dan Redis, serta memakai Node.js/Bun, Python, dan Docker untuk kebutuhan lain. Terbiasa menangani aplikasi sejak pengembangan, deployment di VPS, sampai pemantauan performa.',
+      'cv.skills': 'Keahlian',
+      'cv.skillsLang': 'Bahasa',
+      'cv.skillsBackend': 'Backend',
+      'cv.skillsFrontend': 'Frontend',
+      'cv.skillsData': 'Data & Infrastruktur',
+      'cv.skillsTools': 'Alat & Operasional',
+      'cv.experience': 'Pengalaman Kerja',
+      'cv.expRole': 'FullStack Web Developer',
+      'cv.expPeriod': 'Sidoarjo, Jawa Timur',
+      'cv.expCompany': 'CV. Langitnet Sidoarjo',
+      'cv.expB1':
+        'Membangun dan merawat Langitnet Shop, aplikasi e-commerce untuk pemesanan produk dan layanan, dengan Laravel, Alpine.js, dan Redis.',
+      'cv.expB2':
+        'Mengembangkan Langitnet Mitra, aplikasi ERP kemitraan untuk mengelola kemitraan dan operasional harian mitra.',
+      'cv.expB3':
+        'Menangani sembilan aplikasi internal Langitnet, termasuk B2B, Expedition, Ngantor, dan RMA.',
+      'cv.expB4':
+        'Menjalankan deployment dan operasional di VPS: Docker/Podman, Nginx, Coolify/CloudPanel, cache Redis, dan penyimpanan S3.',
+      'cv.projects': 'Proyek',
+      'cv.proj1Name': 'Langitnet Shop — E-Commerce',
+      'cv.proj1Desc':
+        'Aplikasi e-commerce untuk pemesanan produk dan layanan: katalog, keranjang, dan proses pesanan.',
+      'cv.proj2Name': 'Langitnet Mitra — ERP Kemitraan',
+      'cv.proj2Desc': 'ERP khusus mitra untuk mengelola kemitraan dan operasional harian.',
+      'cv.proj3Name': 'Aplikasi Internal Langitnet',
+      'cv.proj3Desc':
+        'B2B, Expedition, Ngantor, RMA, dan lima aplikasi lain untuk operasional internal perusahaan.',
+      'cv.education': 'Pendidikan',
+      'cv.certifications': 'Sertifikasi & Pelatihan',
+      'cv.languages': 'Bahasa',
+      'cv.languagesValue': 'Indonesia (native) · Inggris (profesional)',
+      'cv.updated': 'Diperbarui Oktober 2026',
+      'cv.print': 'Cetak',
+      'cv.downloadPdf': 'Unduh PDF',
+      'cv.backToPortfolio': 'Kembali ke portofolio',
+      'cv.printHint':
+        'Tips: pada dialog cetak, pilih "Simpan sebagai PDF" dan matikan header/footer.',
+
       /* Kontak */
       'contact.label': 'Kontak',
       'contact.title': 'Mari bikin sesuatu bersama',
@@ -133,6 +180,7 @@
       /* Footer */
       'footer.built': 'Dibuat dengan',
       'footer.email': 'Kirim Email',
+      'footer.cv': 'CV',
 
       /* Metadata */
       'meta.language': 'Indonesian',
@@ -155,6 +203,7 @@
       'nav.skills': 'Skills',
       'nav.contact': 'Contact',
       'nav.emailCta': 'Email Me',
+      'nav.cv': 'Resume',
       'nav.openMenu': 'Open navigation menu',
       'nav.menuOpen': 'Navigation menu open',
       'nav.langLabel': 'Select language',
@@ -173,6 +222,7 @@
         'I build web applications — from clean interfaces to reliable APIs. Currently working at CV. Langitnet Sidoarjo and open to collaboration and remote work.',
       'hero.ctaProjects': 'View Projects',
       'hero.ctaEmail': 'Email Me',
+      'hero.ctaCv': 'Download CV',
       'hero.follow': 'Follow',
       'hero.cardLabel': 'Current role',
 
@@ -223,6 +273,51 @@
       'skills.backend': 'Backend',
       'skills.tools': 'Tools & Others',
 
+      /* Halaman CV (cv.html) */
+      'cv.docTitle': 'Resume — Abid Zakaria, FullStack Web Developer',
+      'cv.role': 'FullStack Web Developer',
+      'cv.location': 'Gresik, East Java, Indonesia',
+      'cv.summary': 'Summary',
+      'cv.summaryText':
+        'FullStack Web Developer building production web applications from interface to API. Works daily with Laravel, PHP, and Redis, and uses Node.js/Bun, Python, and Docker for other needs. Comfortable owning an application from development and VPS deployment through performance monitoring.',
+      'cv.skills': 'Skills',
+      'cv.skillsLang': 'Languages',
+      'cv.skillsBackend': 'Backend',
+      'cv.skillsFrontend': 'Frontend',
+      'cv.skillsData': 'Data & Infrastructure',
+      'cv.skillsTools': 'Operations',
+      'cv.experience': 'Experience',
+      'cv.expRole': 'FullStack Web Developer',
+      'cv.expPeriod': 'Sidoarjo, East Java',
+      'cv.expCompany': 'CV. Langitnet Sidoarjo',
+      'cv.expB1':
+        'Built and maintained Langitnet Shop, an e-commerce application for ordering products and services, using Laravel, Alpine.js, and Redis.',
+      'cv.expB2':
+        'Developed Langitnet Mitra, a partner ERP application for managing partnerships and daily partner operations.',
+      'cv.expB3':
+        'Maintained nine internal Langitnet applications, including B2B, Expedition, Ngantor, and RMA.',
+      'cv.expB4':
+        'Ran deployment and operations on VPS: Docker/Podman, Nginx, Coolify/CloudPanel, Redis caching, and S3 storage.',
+      'cv.projects': 'Projects',
+      'cv.proj1Name': 'Langitnet Shop — E-Commerce',
+      'cv.proj1Desc':
+        'E-commerce application for ordering products and services: catalog, cart, and order flow.',
+      'cv.proj2Name': 'Langitnet Mitra — Partner ERP',
+      'cv.proj2Desc': 'Partner-only ERP for managing partnerships and daily operations.',
+      'cv.proj3Name': 'Internal Langitnet Applications',
+      'cv.proj3Desc':
+        'B2B, Expedition, Ngantor, RMA, and five other applications for internal company operations.',
+      'cv.education': 'Education',
+      'cv.certifications': 'Certifications & Training',
+      'cv.languages': 'Languages',
+      'cv.languagesValue': 'Indonesian (native) · English (professional)',
+      'cv.updated': 'Updated October 2026',
+      'cv.print': 'Print',
+      'cv.downloadPdf': 'Download PDF',
+      'cv.backToPortfolio': 'Back to portfolio',
+      'cv.printHint':
+        'Tip: in the print dialog, choose "Save as PDF" and turn off headers and footers.',
+
       /* Kontak */
       'contact.label': 'Contact',
       'contact.title': "Let's build something together",
@@ -254,6 +349,7 @@
       /* Footer */
       'footer.built': 'Built with',
       'footer.email': 'Send Email',
+      'footer.cv': 'Resume',
 
       /* Metadata */
       'meta.language': 'English',
